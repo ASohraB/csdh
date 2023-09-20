@@ -8,7 +8,7 @@
           import { PyMainThreadSandbox } from "https://esm.sh/pysandbox@0.3.1/";
           const sandbox = new PyMainThreadSandbox();
           await sandbox.init();
-          await sandbox.exec("display('Hello', target=current_target())", "output");
+          await sandbox.exec("display('Hello World', target=current_target())", "output");
         </script>
         <div id="output"></div>
         <div id="out"></div>
