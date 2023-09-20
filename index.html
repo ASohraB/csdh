@@ -1,14 +1,25 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>CogSciDigHum: GPS demo</title>
-</head>
-<body>
-<iframe
-	src="http://curve.fit"
-	frameborder="0"
-	width="850"
-	height="450"
-></iframe>
-</body>
+    <head>
+        <script type="importmap">
+            { "imports": {
+                "polyscript": "https://esm.sh/polyscript@0.3.8"
+            } }
+          </script>
+    </head>
+    <body>
+        <script type="module">
+            import {PyMainThreadSandbox} from "/dist/index.esm.js";
+            const sandbox = new PyMainThreadSandbox({ jsApi: { getJsValue: () => 'value from js' }, modules: { "foo.py": `
+import js
+import pysandbox
+
+def custom_display(target):
+    pysandbox.display(js.getJsValue(), target)
+` }});
+            await sandbox.init();
+            await sandbox.exec("import foo\nfoo.custom_display(current_target())", 'out');
+        </script>
+        <div id="out"></div>
+    </body>
 </html>
