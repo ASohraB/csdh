@@ -57,26 +57,20 @@
             //textInput, // string  in 'prompt' Textbox component
             //me start
             
-            //const response_0 = await fetch("https://raw.githubusercontent.com/gradio-app/gradio/main/test/test_files/bus.png");
-            //const exampleImage = await response_0.blob();
-            var img = document.createElement("img");
-            img.src = "http://www.google.com/intl/en_com/images/logo_plain.png";
-            var src = document.getElementById("header");
-            src.appendChild(img);
-            const exampleImage =img.src
-            const app = await client("https://osaaso-minigpt4-cpp.hf.space/");
-            const result2 = await app.predict(0, [
-                            exampleImage, 	// blob in 'parameter_6' Image component		
-                            "Howdy!", // string  in 'User' Textbox component
-                ]);
+            //import { client } from "@gradio/client";
             
-            console.log(result2.data);
+            const app = await client("https://osaaso-aj-rick-discord-bot.hf.space/");
+            const result = await app.predict("/predict", [		
+            				"Howdy!", // string  in 'parameter_6' Textbox component
+            	]);
+
 
             //me end
             //]);
-            //prompt_holder.textContent = result.data;            
-
-            } catch (error){
+            prompt_holder.textContent = result.data;            
+            console.log("noError:",result.data);         
+            } 
+        catch (error){
                  console.log("Error:",error.message);         
             }
     
