@@ -61,7 +61,16 @@
             }
     
         }
-
+        const response_0 = await fetch("https://raw.githubusercontent.com/gradio-app/gradio/main/test/test_files/bus.png");
+        const exampleImage = await response_0.blob();
+        						
+        const app = await client("https://osaaso-minigpt4-cpp.hf.space/");
+        const result2 = await app.predict(0, [
+        				exampleImage, 	// blob in 'parameter_6' Image component		
+        				"Howdy!", // string  in 'User' Textbox component
+        	]);
+        
+        console.log(result2.data);
         
 );
 </script>
