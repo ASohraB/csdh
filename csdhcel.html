@@ -30,17 +30,23 @@
     </style>
 </head>
 <body>
-    <h3><strong>AI Text-To-Image Prompt Generator</strong></h3>
+    <div id="header"></div>
+    <h3><strong>uTube!</strong></h3>
     <br><br>
     <div id="text-input"><input type="text" title="Starting Phrase" id="phrase" placeholder="Enter phrase here"></div>
     <br><br><br><br>
-    <button id="run"><strong>Generate Prompt</strong></button>
+    <button id="run"><strong>Scrape</strong></button>
     <br><br><br><br><br>
     <div id="prompt-holder"></div>
 </body>
 
 <script type="module" src="https://cdn.jsdelivr.net/npm/@gradio/client@0.1.4/dist/index.min.js"></script>
 <script type="module">
+    var img = document.createElement("img");
+    img.src = "http://www.google.com/intl/en_com/images/logo_plain.png";
+    var src = document.getElementById("header");
+    src.appendChild(img);
+    
     import { client } from "https://cdn.jsdelivr.net/npm/@gradio/client@0.1.4/dist/index.min.js";
     const inputText = document.getElementById("phrase");
     const generate = document.getElementById("run");
