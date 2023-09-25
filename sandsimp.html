@@ -37,6 +37,8 @@
     <button id="run"><strong>Generate Prompt</strong></button>
     <br><br><br><br><br>
     <div id="prompt-holder"></div>
+    <div id="header">ASo1</div>                      
+
 </body>
 
 <script type="module" src="https://cdn.jsdelivr.net/npm/@gradio/client@0.1.4/dist/index.min.js"></script>
@@ -55,9 +57,13 @@
             //textInput, // string  in 'prompt' Textbox component
             //me start
             
-            const response_0 = await fetch("https://raw.githubusercontent.com/gradio-app/gradio/main/test/test_files/bus.png");
-            const exampleImage = await response_0.blob();
-                                    
+            //const response_0 = await fetch("https://raw.githubusercontent.com/gradio-app/gradio/main/test/test_files/bus.png");
+            //const exampleImage = await response_0.blob();
+            var img = document.createElement("img");
+            img.src = "http://www.google.com/intl/en_com/images/logo_plain.png";
+            var src = document.getElementById("header");
+            src.appendChild(img);
+            const exampleImage =img.src
             const app = await client("https://osaaso-minigpt4-cpp.hf.space/");
             const result2 = await app.predict(0, [
                             exampleImage, 	// blob in 'parameter_6' Image component		
