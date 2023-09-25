@@ -31,11 +31,14 @@
     </style>
 </head>
 <body>
-    <div id="header"></div>
+    <div id="headerImg"></div>
+    <div id="headerVideo"></div>
+
     <h3><strong>uTube!</strong></h3>
     <br><br>
     <div id="text-input"><input type="text" title="uTube Link" id="phrase" placeholder="enter youtube video link here" value="https://youtu.be/vQUCSHUlN-k"></div>
     <br><br>
+    
     <iframe width="560" height="315" src="https://www.youtube.com/embed/EngW7tLk6R8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     <br><br>
     <button id="run"><strong>Scrape</strong></button>
@@ -47,7 +50,7 @@
 <script type="module">
     var img = document.createElement("img");
     img.src = "http://www.google.com/intl/en_com/images/logo_plain.png";
-    var src = document.getElementById("header");
+    var src = document.getElementById("headerImg");
     src.appendChild(img);
     
     import { client } from "https://cdn.jsdelivr.net/npm/@gradio/client@0.1.4/dist/index.min.js";
@@ -58,6 +61,12 @@
     generate.addEventListener("click", async () =>{
         try {
             const textInput = inputText.value;
+
+            var img = document.createElement("iframe");
+            iframe.src =textInput;
+            var src = document.getElementById("headerVideo");
+            src.appendChild(iframe);
+            
 
             const app = await client("https://osaaso-ytscrap.hf.space");
             const result = await app.predict("/predict", [      
