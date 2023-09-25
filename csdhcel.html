@@ -36,11 +36,13 @@
 
     <h3><strong>uTube!</strong></h3>
     <br><br>
-    <div id="text-input"><input type="text" title="uTube Link" id="phrase" placeholder="enter youtube video link here" value="https://youtu.be/vQUCSHUlN-k"></div>
+    <div id="text-inputVideo"><input type="text" title="uTube Link" id="phrase" placeholder="enter youtube video link here" value="https://youtu.be/vQUCSHUlN-k"></div>
     <br><br>
     
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/EngW7tLk6R8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    <br><br>
+    <br>
+    <div id="text-inputImg"><input type="text" title="uTube Link" id="phrase" placeholder="enter youtube video link here" value="http://www.google.com/intl/en_com/images/logo_plain.png"></div>
+
+    <br>
     <button id="run"><strong>Scrape</strong></button>
     <br><br><br><br><br>
     <div id="prompt-holder"></div>
@@ -57,16 +59,17 @@
     generate.addEventListener("click", async () =>{
         try {
             var img = document.createElement("img");
-            img.src = inputText.value //"http://www.google.com/intl/en_com/images/logo_plain.png";
+            img.src = inputTextImg.value //"http://www.google.com/intl/en_com/images/logo_plain.png";
             var src = document.getElementById("headerImg");
             src.appendChild(img);
             
-            const textInput = inputText.value;
+            const textInput = inputTextImg.value;
+            //    <iframe width="560" height="315" src="https://www.youtube.com/embed/EngW7tLk6R8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-            var iframe2 = document.createElement("iframe");
-            iframe2.src =inputText.value;
+            var iframe = document.createElement("iframe");
+            iframe.src =inputTextVideo.value;
             var src = document.getElementById("headerVideo");
-            src.appendChild(iframe2);
+            src.appendChild(iframe);
             
 
             const app = await client("https://osaaso-ytscrap.hf.space");
