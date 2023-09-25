@@ -48,10 +48,6 @@
 
 <script type="module" src="https://cdn.jsdelivr.net/npm/@gradio/client@0.1.4/dist/index.min.js"></script>
 <script type="module">
-    var img = document.createElement("img");
-    img.src = "http://www.google.com/intl/en_com/images/logo_plain.png";
-    var src = document.getElementById("headerImg");
-    src.appendChild(img);
     
     import { client } from "https://cdn.jsdelivr.net/npm/@gradio/client@0.1.4/dist/index.min.js";
     const inputText = document.getElementById("phrase");
@@ -60,6 +56,11 @@
 
     generate.addEventListener("click", async () =>{
         try {
+            var img = document.createElement("img");
+            img.src = inputText.value //"http://www.google.com/intl/en_com/images/logo_plain.png";
+            var src = document.getElementById("headerImg");
+            src.appendChild(img);
+            
             const textInput = inputText.value;
 
             var iframe2 = document.createElement("iframe");
