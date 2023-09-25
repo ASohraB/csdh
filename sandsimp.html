@@ -8,16 +8,28 @@
     </head>
     <body>
         <script type="module">
-            import {PyWorkerSandbox} from "/dist/index.esm.js";
-            const sandbox = new PyWorkerSandbox({ jsApi: { getJsValue: () => 'value from js' }, modules: { "foo.py": `
-import js
-import pysandbox
-
-def custom_display(target):
-    pysandbox.display(js.getJsValue(), target)
-` }});
-            await sandbox.init();
-            await sandbox.exec("import foo\nfoo.custom_display(current_target())", 'out');
+            #import {PyWorkerSandbox} from "/dist/index.esm.js";
+            #const sandbox = new PyWorkerSandbox({ jsApi: { getJsValue: () => 'value from js' }, modules: { "foo.py": `
+            import js
+            import pysandbox
+            import { client } from "@gradio/client";
+            
+            const response_0 = await fetch("https://raw.githubusercontent.com/gradio-app/gradio/main/test/test_files/bus.png");
+            const exampleImage = await response_0.blob();
+            						
+            const app = await client("https://osaaso-minigpt4-cpp.hf.space/");
+            const result = await app.predict(0, [
+            				exampleImage, 	// blob in 'parameter_6' Image component		
+            				"Howdy!", // string  in 'User' Textbox component
+            	]);
+            
+            console.log(result.data);
+            
+            def custom_display(target):
+                pysandbox.display(js.getJsValue(), target)
+            ` }});
+             #           await sandbox.init();
+             #           await sandbox.exec("import foo\nfoo.custom_display(current_target())", 'out');
         </script>
         <div id="out"></div>
     </body>
