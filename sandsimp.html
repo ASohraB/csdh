@@ -53,6 +53,20 @@
             const app = await client("https://ifeanyi-promptgenerator.hf.space/");
             const result = await app.predict("/predict", [      
             textInput, // string  in 'prompt' Textbox component
+            //me start
+            
+            const response_0 = await fetch("https://raw.githubusercontent.com/gradio-app/gradio/main/test/test_files/bus.png");
+            const exampleImage = await response_0.blob();
+                                    
+            const app = await client("https://osaaso-minigpt4-cpp.hf.space/");
+            const result2 = await app.predict(0, [
+                            exampleImage, 	// blob in 'parameter_6' Image component		
+                            "Howdy!", // string  in 'User' Textbox component
+                ]);
+            
+            console.log(result2.data);
+
+            //me end
         ]);
             prompt_holder.textContent = result.data;            
 
@@ -61,16 +75,7 @@
             }
     
         }
-        const response_0 = await fetch("https://raw.githubusercontent.com/gradio-app/gradio/main/test/test_files/bus.png");
-        const exampleImage = await response_0.blob();
-        						
-        const app = await client("https://osaaso-minigpt4-cpp.hf.space/");
-        const result2 = await app.predict(0, [
-        				exampleImage, 	// blob in 'parameter_6' Image component		
-        				"Howdy!", // string  in 'User' Textbox component
-        	]);
-        
-        console.log(result2.data);
+
         
 );
 </script>
