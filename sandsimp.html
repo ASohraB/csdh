@@ -38,6 +38,7 @@
     <br><br><br><br><br>
     <div id="prompt-holder"></div>
     <div id="header">ASo1</div>                      
+    <p id="demo"></p>
 
 </body>
 
@@ -67,8 +68,8 @@
 
             //me end
             //]);
-            document.write (result.data)
-            //prompt_holder.textContent = result.data;            
+
+            document.getElementById("demo").innerHTML = result.data;            //prompt_holder.textContent = result.data;            
             //console.log("noError:",result.data);         
             } 
         catch (error){
