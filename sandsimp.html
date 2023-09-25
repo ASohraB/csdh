@@ -1,28 +1,68 @@
-<html>
-    <head>
-        <script type="importmap">
-            { "imports": {
-                "polyscript": "https://esm.sh/polyscript@0.3.8"
-            } }
-          </script>
-    </head>
-    <body>
-        <script type="module">
-            import js
-            import { client } from "@gradio/client";
-            
-            const response_0 = await fetch("https://raw.githubusercontent.com/gradio-app/gradio/main/test/test_files/bus.png");
-            const exampleImage = await response_0.blob();
-            						
-            const app = await client("https://osaaso-minigpt4-cpp.hf.space/");
-            const result = await app.predict(0, [
-            				exampleImage, 	// blob in 'parameter_6' Image component		
-            				"Howdy!", // string  in 'User' Textbox component
-            	]);
-            
-            console.log(result.data);
-            
-        </script>
-        <div id="out"></div>
-    </body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prompt Generator</title>
+    <style>
+        body {
+            text-align: center;
+            background-color:whitesmoke;
+          }
+
+        #phrase {
+            padding: 15px;
+            width: 20%;
+            border: 5px solid rgb(49, 47, 68);
+            text-align: center;
+        }
+
+        #prompt-holder {
+            width: 50%;
+            height: 50%;
+            margin: 0 auto;
+            border: 5px solid rgb(50, 31, 221);
+            padding: 20px;
+            text-align: center;
+            background-color:rgb(246, 247, 248)
+    }
+    </style>
+</head>
+<body>
+    <h3><strong>AI Text-To-Image Prompt Generator</strong></h3>
+    <br><br>
+    <div id="text-input"><input type="text" title="Starting Phrase" id="phrase" placeholder="Enter phrase here"></div>
+    <br><br><br><br>
+    <button id="run"><strong>Generate Prompt</strong></button>
+    <br><br><br><br><br>
+    <div id="prompt-holder"></div>
+</body>
+
+<script type="module" src="https://cdn.jsdelivr.net/npm/@gradio/client@0.1.4/dist/index.min.js"></script>
+<script type="module">
+    import { client } from "https://cdn.jsdelivr.net/npm/@gradio/client@0.1.4/dist/index.min.js";
+    const inputText = document.getElementById("phrase");
+    const generate = document.getElementById("run");
+    const prompt_holder = document.getElementById("prompt-holder");
+
+    generate.addEventListener("click", async () =>{
+        try {
+            const textInput = inputText.value;
+
+            const app = await client("https://ifeanyi-promptgenerator.hf.space/");
+            const result = await app.predict("/predict", [      
+            textInput, // string  in 'prompt' Textbox component
+        ]);
+            prompt_holder.textContent = result.data;            
+
+            } catch (error){
+                 console.log("Error:",error.message);         
+            }
+    
+        }
+
+        
+);
+</script>
 </html>
