@@ -60,7 +60,7 @@
             const result = await app.predict("/predict", [      
             textInput, // string  in 'prompt' Textbox component
         ]);
-            prompt_holder.textContent = result['views'];            
+            prompt_holder.textContent = result.data;            
 
             } catch (error){
                  console.log("Error:",error.message);         
