@@ -58,8 +58,33 @@
     const generate = document.getElementById("run");
     const prompt_holder = document.getElementById("prompt-holder");
 
+    const celscilist = {
+      'dd': { 'x': { 'followers': 400 } },
+      'jp': { 'x': { 'followers': 300 } },
+      'sh': { 'x': { 'followers': 200 } },
+      'gs': { 'x': { 'followers': 100 } }
+    };
+    
+    class Celsci {
+      static fame(x) {
+        let y = "low";
+        if (x > 300) {
+          y = 'high';
+        }
+        return y;
+      }
+    }
+    
+    function checkFame(x) {
+      const person = Celsci.fame(celscilist[x]['x']['followers']);
+      return person;
+    }
+    
+    prompt_holder.textContent =checkFame('dd');            
+
     generate.addEventListener("click", async () =>{
         try {
+            //checkFame(x)
             var img = document.createElement("img");
             img.src = inputTextImg.value //"http://www.google.com/intl/en_com/images/logo_plain.png";
             var src = document.getElementById("headerImg");
