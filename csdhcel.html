@@ -40,7 +40,6 @@
     <div id="text-inputVideo"><input type="text" title="uTube Link" id="inputTextVideo" placeholder="enter youtube video link here" value="https://youtu.be/vQUCSHUlN-k"></div>
     <br>
     <iframe width="560" height="315" src="https://www.youtube.com/embed/EngW7tLk6R8" id="iframe1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
     <br>
     
     <br>
@@ -67,19 +66,12 @@
             var src = document.getElementById("headerImg");
             src.appendChild(img);
 
-            //var iframe = document.createElement("iframe");
-            iframe1.src =inputTextVideo.value;
-
-            //iframe.allowfullscreen
-            var src = document.getElementById("headerVideo");
-            src.appendChild(iframe1);
-
-            const textInput = inputTextImg.value;
+            //const textInput = inputTextVideo.value;
             
 
             const app = await client("https://osaaso-ytscrap.hf.space");
             const result = await app.predict("/predict", [      
-            textInput, // string  in 'prompt' Textbox component
+            inputTextVideo.value, // string  in 'prompt' Textbox component
         ]);
             prompt_holder.textContent = result.data;            
 
