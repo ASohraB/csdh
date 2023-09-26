@@ -62,14 +62,20 @@
             img.src = inputTextImg.value //"http://www.google.com/intl/en_com/images/logo_plain.png";
             var src = document.getElementById("headerImg");
             src.appendChild(img);
-            
-            const textInput = inputTextImg.value;
-            //    <iframe width="560" height="315" src="https://www.youtube.com/embed/EngW7tLk6R8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
             var iframe = document.createElement("iframe");
             iframe.src =inputTextVideo.value;
+            iframe.width="560";
+            iframe.height="315";
+            iframe.title="YouTube video player";
+            iframe.frameborder="0";
+            iframe.allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+            //iframe.allowfullscreen
             var src = document.getElementById("headerVideo");
             src.appendChild(iframe);
+            //    <iframe width="560" height="315" src="https://www.youtube.com/embed/EngW7tLk6R8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+            const textInput = inputTextImg.value;
             
 
             const app = await client("https://osaaso-ytscrap.hf.space");
