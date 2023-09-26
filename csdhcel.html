@@ -36,11 +36,11 @@
 
     <h3><strong>uTube!</strong></h3>
     <br><br>
-    <div id="text-inputVideo"><input type="text" title="uTube Link" id="phrase" placeholder="enter youtube video link here" value="https://youtu.be/vQUCSHUlN-k"></div>
+    <div id="text-inputVideo"><input type="text" title="uTube Link" id="inputTextVideo" placeholder="enter youtube video link here" value="https://youtu.be/vQUCSHUlN-k"></div>
     <br><br>
     
     <br>
-    <div id="text-inputImg"><input type="text" title="uTube Link" id="phrase" placeholder="enter youtube video link here" value="http://www.google.com/intl/en_com/images/logo_plain.png"></div>
+    <div id="text-inputImg"><input type="text" title="uTube Link" id="inputTextImg" placeholder="enter youtube video link here" value="http://www.google.com/intl/en_com/images/logo_plain.png"></div>
 
     <br>
     <button id="run"><strong>Scrape</strong></button>
@@ -52,7 +52,7 @@
 <script type="module">
     
     import { client } from "https://cdn.jsdelivr.net/npm/@gradio/client@0.1.4/dist/index.min.js";
-    const inputText = document.getElementById("phrase");
+    //const inputText = document.getElementById("inputTextImg");
     const generate = document.getElementById("run");
     const prompt_holder = document.getElementById("prompt-holder");
 
