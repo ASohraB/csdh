@@ -30,34 +30,38 @@
     </style>
 </head>
 <body>
-    <h3><strong>AI Text-To-Image Prompt Generator</strong></h3>
+    <h3><strong>AI</strong></h3>
     <br><br>
     <div id="text-input"><input type="text" title="Starting Phrase" id="phrase" placeholder="Enter phrase here"></div>
-    <br><br><br><br>
+    <br><br>
+    <br><br>
+    <div id="text-input2"><input type="text" title="Phrase to Parse" id="phrase2" placeholder="Enter phrase2 here"></div>
+    <br><br>
     <button id="run"><strong>Generate Prompt</strong></button>
-    <br><br><br><br><br>
-    <div id="prompt-holder"></div>
-    <div id="header">ASo1</div>                      
+    <br><br>
+    <button id="run2"><strong>Parse</strong></button>
+    <br><br><br>
+    <div id="prompt-holder">Test1</div>
     <p id="demo"></p>
+    
+    <div id="prompt-holder2">TEst2</div>
+    <p id="demo2"></p>
 
 </body>
 
 <script type="module" src="https://cdn.jsdelivr.net/npm/@gradio/client@0.1.4/dist/index.min.js">
     import { client } from "https://cdn.jsdelivr.net/npm/@gradio/client@0.1.4/dist/index.min.js";
+    
     const inputText = document.getElementById("phrase");
     const generate = document.getElementById("run");
     const prompt_holder = document.getElementById("prompt-holder");
 
+    const inputText = document.getElementById("phrase2");
+    const generate = document.getElementById("run2");
+    const prompt_holder = document.getElementById("prompt-holder2");
+
     generate.addEventListener("click", async () =>{
         try {
-            //const textInput = inputText.value;
-
-            //const app = await client("https://ifeanyi-promptgenerator.hf.space/");
-            //const result = await app.predict("/predict", [      
-            //textInput, // string  in 'prompt' Textbox component
-            //me start
-            
-            //import { client } from "@gradio/client";
             
             const app = await client("https://osaaso-ytscrap.hf.space/");
             const result = await app.predict("/predict", [		
@@ -65,16 +69,14 @@
             	]);
 
             document.getElementById("demo").innerHTML = result.data;            
-            prompt_holder.textContent = result.data; 
-            header.textContent="Aso2";
-            document.write(result);
-            document.write(result.data);
+            //prompt_holder.textContent = result.data; 
+            //document.write(result);
+            //document.write(result.data);
 
             //me end
             //]);
 
             console.log("noError1:",result.data); 
-            console.log("noError2:",result.data);         
 
             } 
         catch (error){
@@ -82,8 +84,27 @@
             }
     
         }
+    generate2.addEventListener("click", async () =>{
+        try {
+            
+            const app = await client("https://osaaso-ytscrap.hf.space/");
+            const result2 = await app.predict("/predict", [		
+            				"Howdy!", // string  in 'link' Textbox component
+            	]);
 
+            document.getElementById("demo2").innerHTML = result2.data;            
+
+
+            console.log("noError2:",result.data);         
+
+            } 
+        catch (error){
+                 console.log("Error2:",error.message);         
+            }
+    
+        }
         
 );
+
 </script>
 </html>
