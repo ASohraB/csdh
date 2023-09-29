@@ -77,7 +77,9 @@
             				inputTextVideo.value, // string  in 'text' Textbox component
             	]); 
             prompt_holder.textContent = "Out:"; //result.data[0];
-            iframe.contentWindow.document.write(JSON.stringify(result.data[2])); 
+            iframe.src = 'data:text/html;charset=utf-8,' + encodeURI(JSON.stringify(result.data[2]));
+            document.body.appendChild(iframe);
+            //iframe.contentWindow.document.write(JSON.stringify(result.data[2])); 
             iframe.contentWindow.document.close();
 
             prompt_holder.textContent = JSON.stringify(result.data[2]); 
