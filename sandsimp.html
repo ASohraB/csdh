@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prompt Generator</title>
+    <title>CSDH uTuber!</title>
+    
     <style>
         body {
             text-align: center;
@@ -30,81 +31,54 @@
     </style>
 </head>
 <body>
-    <h3><strong>AI</strong></h3>
-    <br><br>
-    <div id="text-input"><input type="text" title="Starting Phrase" id="phrase" placeholder="Enter phrase here"></div>
-    <br><br>
-    <br><br>
-    <div id="text-input2"><input type="text" title="Phrase to Parse" id="phrase2" placeholder="Enter phrase2 here"></div>
-    <br><br>
-    <button id="run"><strong>Generate Prompt</strong></button>
-    <br><br>
-    <button id="run2"><strong>Parse</strong></button>
-    <br><br><br>
-    <div id="prompt-holder">Test1</div>
-    <p id="demo"></p>
-    
-    <div id="prompt-holder2">TEst2</div>
-    <p id="demo2"></p>
+    <div id="headerImg"></div>
 
+
+    <div id="text-inputImg"><input type="text" title="Input-image link" id="inputTextImg" placeholder="enter image link here" value="http://www.google.com/intl/en_com/images/logo_plain.png"></div>
+
+    <br>
+    <div id="text-inputVideo"><input type="text" title="Input-uTube Link" id="inputTextVideo" placeholder="enter youtube video link here" value="https://youtu.be/vQUCSHUlN-k"></div>
+    <br>
+    <br>
+    <button id="run"><strong>Scrape</strong></button>
+    <br><br>
+    <h3><strong>Output:</strong></h3>
+
+    <div id="prompt-holder"></div>
 </body>
 
-<script type="module" src="https://cdn.jsdelivr.net/npm/@gradio/client@0.1.4/dist/index.min.js">
-    import { client } from "https://cdn.jsdelivr.net/npm/@gradio/client@0.1.4/dist/index.min.js";
+<script type="module" src="https://cdn.jsdelivr.net/npm/@gradio/client@0.1.4/dist/index.min.js"></script>
+<script type="module">
     
-    const inputText = document.getElementById("phrase");
+    import { client } from "https://cdn.jsdelivr.net/npm/@gradio/client@0.1.4/dist/index.min.js";
+    //const inputText = document.getElementById("inputTextImg");
     const generate = document.getElementById("run");
     const prompt_holder = document.getElementById("prompt-holder");
 
-    const inputText = document.getElementById("phrase2");
-    const generate = document.getElementById("run2");
-    const prompt_holder = document.getElementById("prompt-holder2");
-
     generate.addEventListener("click", async () =>{
         try {
+            //checkFame(x)
+            var img = document.createElement("img");
+            img.src = inputTextImg.value //"http://www.google.com/intl/en_com/images/logo_plain.png";
+            var src = document.getElementById("headerImg");
+            src.appendChild(img);
+
+            //const textInput = inputTextVideo.value;
             
-            const app = await client("https://osaaso-ytscrap.hf.space/");
-            const result = await app.predict("/predict", [		
-            				"Howdy!", // string  in 'link' Textbox component
-            	]);
 
-            document.getElementById("demo").innerHTML = result.data;            
-            //prompt_holder.textContent = result.data; 
-            //document.write(result);
-            //document.write(result.data);
+            const app = await client("https://osaaso-ytscrap.hf.space");
+            const result = await app.predict("/predict", [      
+            inputTextVideo.value, // string  in 'prompt' Textbox component
+        ]);
+            prompt_holder.textContent = result.data;            
 
-            //me end
-            //]);
-
-            console.log("noError1:",result.data); 
-
-            } 
-        catch (error){
+            } catch (error){
                  console.log("Error:",error.message);         
             }
     
         }
-    generate2.addEventListener("click", async () =>{
-        try {
-            
-            const app = await client("https://osaaso-grad1.hf.space/");
-            const result = await app.predict("/predict", [		
-            				"Howdy!", // string  in 'text' Textbox component
-            	]);
 
-            document.getElementById("demo2").innerHTML = result2.data;            
-
-
-            console.log("noError2:",result.data);         
-
-            } 
-        catch (error){
-                 console.log("Error2:",error.message);         
-            }
-    
-        }
         
 );
-
 </script>
 </html>
