@@ -80,7 +80,7 @@
             iframe.contentWindow.document.write(result.data[1].stringify()); 
             iframe.contentWindow.document.close();
 
-            prompt_holder.textContent = result.data[1].stringify(); 
+            prompt_holder.textContent = stringify(result.data[1]); 
 
             } catch (error){
                  console.log("Error:",error.message);         
