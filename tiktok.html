@@ -77,13 +77,15 @@
             				inputTextVideo.value, // string  in 'text' Textbox component
             	]); 
             var iframe = document.createElement('iframe');
-
+            document.getElementById("myDIV").appendChild(iframe);
+            iframe.setAttribute("style","height:250%;width:250%;");
+            iframe.contentWindow.document.open();
             //prompt_holder.textContent = "Out:"; //result.data[0];
             //iframe.src = 'data:text/html;charset=utf-8,' + JSON.stringify(result.data[2]));
             //iframe.src = encodeURI(JSON.stringify(result.data[2]));
             iframe.contentWindow.document.write('data:text/html;charset=utf-8,' + JSON.stringify(result.data[2])); 
 
-            document.body.appendChild(iframe);
+            //document.body.appendChild(iframe);
             //iframe.contentWindow.document.write(JSON.stringify(result.data[2])); 
             iframe.contentWindow.document.close();
 
