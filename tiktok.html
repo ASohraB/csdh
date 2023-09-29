@@ -55,7 +55,6 @@
     const generate = document.getElementById("run");
     const prompt_holder = document.getElementById("prompt-holder");
 
-    const CreateIframeElement = () => {
 
     var iframe = document.createElement('iframe');
     
@@ -81,10 +80,10 @@
             const result = await app.predict("/predict", [		
             				inputTextVideo.value, // string  in 'text' Textbox component
             	]); 
+            
             iframe.contentWindow.document.write( result.data[1]);
 
-            //prompt_holder.textContent = result.data[1].stringify();  // <iframe width="400" height="600" src="https://cogscidighum.github.io/3704A/action2.html" id="iframe2" title="Our webpage!"></iframe>
-           
+            //prompt_holder.textContent = result.data[1].stringify(); 
 
             } catch (error){
                  console.log("Error:",error.message);         
