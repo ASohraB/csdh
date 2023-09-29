@@ -43,6 +43,7 @@
     <button id="run"><strong>Scrape</strong></button>
     <br><br>
     <h3><strong>Output:</strong></h3>
+      <iframe width="400" height="600" src="https://cogscidighum.github.io/3704A/action2.html" id="iframe2" title="Our webpage!"></iframe>
 
     <div id="prompt-holder"></div>
 </body>
@@ -55,6 +56,14 @@
     const generate = document.getElementById("run");
     const prompt_holder = document.getElementById("prompt-holder");
 
+    const CreateIframeElement = () => {
+
+    // Creating iframe element.
+    var el = document.createElement("iframe");
+
+    // setting the values for the attributes.
+    el.srcdoc = `<h1>.Iframe Element.</h1>
+            
     generate.addEventListener("click", async () =>{
         try {
             //checkFame(x)
@@ -70,8 +79,10 @@
             const result = await app.predict("/predict", [		
             				inputTextVideo.value, // string  in 'text' Textbox component
             	]); 
- 
-            prompt_holder.textContent = result.data[1].stringify();            
+             el.srcdoc = result.data[1] //`<h1>.Iframe Element.</h1>
+
+            //prompt_holder.textContent = result.data[1].stringify();  // <iframe width="400" height="600" src="https://cogscidighum.github.io/3704A/action2.html" id="iframe2" title="Our webpage!"></iframe>
+           
 
             } catch (error){
                  console.log("Error:",error.message);         
