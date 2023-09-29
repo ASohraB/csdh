@@ -31,13 +31,11 @@
     </style>
 </head>
 <body>
-    <div id="headerImg"></div>
 
 
-    <div id="text-inputImg"><input type="text" title="Input-image link" id="inputTextImg" placeholder="enter image link here" value="http://www.google.com/intl/en_com/images/logo_plain.png"></div>
 
     <br>
-    <div id="text-inputVideo"><input type="text" title="Input-uTube Link" id="inputTextVideo" placeholder="enter youtube video link here" value="https://youtu.be/vQUCSHUlN-k"></div>
+    <div id="text-inputVideo"><input type="text" title="Input-uTube Link" id="inputTextVideo" placeholder="enter youtube video link here" value="a cat"></div>
     <br>
     <br>
     <button id="run"><strong>Scrape</strong></button>
@@ -45,6 +43,8 @@
     <h3><strong>Output:</strong></h3>
 
     <div id="prompt-holder"></div>
+    <div id="myDIV"></div>
+
 </body>
 
 <script type="module" src="https://cdn.jsdelivr.net/npm/@gradio/client@0.1.4/dist/index.min.js"></script>
@@ -55,23 +55,19 @@
     const generate = document.getElementById("run");
     const prompt_holder = document.getElementById("prompt-holder");
 
-
+  
     var iframe = document.createElement('iframe');
-    
-    // div tag in which iframe will be added should have id attribute with value myDIV
     document.getElementById("myDIV").appendChild(iframe);
-    
-    // provide height and width to it
     iframe.setAttribute("style","height:100%;width:100%;");
     iframe.contentWindow.document.open();
             
     generate.addEventListener("click", async () =>{
         try {
             //checkFame(x)
-            var img = document.createElement("img");
-            img.src = inputTextImg.value //"http://www.google.com/intl/en_com/images/logo_plain.png";
-            var src = document.getElementById("headerImg");
-            src.appendChild(img);
+            //var img = document.createElement("img");
+            //img.src = inputTextImg.value //"http://www.google.com/intl/en_com/images/logo_plain.png";
+            //var src = document.getElementById("headerImg");
+            //src.appendChild(img);
 
             //const textInput = inputTextVideo.value;
             
@@ -80,8 +76,8 @@
             const result = await app.predict("/predict", [		
             				inputTextVideo.value, // string  in 'text' Textbox component
             	]); 
-            
-            iframe.contentWindow.document.write( result.data[1]);
+            prompt_holder.textContent = result.data[0]);
+            iframe.contentWindow.document.write(<h1>asoh</h1>); 
 
             //prompt_holder.textContent = result.data[1].stringify(); 
 
