@@ -87,9 +87,9 @@
     generate2.addEventListener("click", async () =>{
         try {
             
-            const app = await client("https://osaaso-ytscrap.hf.space/");
-            const result2 = await app.predict("/predict", [		
-            				"Howdy!", // string  in 'link' Textbox component
+            const app = await client("https://osaaso-grad1.hf.space/");
+            const result = await app.predict("/predict", [		
+            				"Howdy!", // string  in 'text' Textbox component
             	]);
 
             document.getElementById("demo2").innerHTML = result2.data;            
