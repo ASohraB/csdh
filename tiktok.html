@@ -77,7 +77,8 @@
             				inputTextVideo.value, // string  in 'text' Textbox component
             	]); 
             prompt_holder.textContent = "Out:"; //result.data[0];
-            iframe.contentWindow.document.write(result.data[0]); 
+            iframe.contentWindow.document.write(result.data[1]); 
+            iframe.contentWindow.document.close();
 
             //prompt_holder.textContent = result.data[1].stringify(); 
 
