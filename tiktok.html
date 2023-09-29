@@ -43,7 +43,6 @@
     <button id="run"><strong>Scrape</strong></button>
     <br><br>
     <h3><strong>Output:</strong></h3>
-      <iframe width="400" height="600" src="https://cogscidighum.github.io/3704A/action2.html" id="iframe2" title="Our webpage!"></iframe>
 
     <div id="prompt-holder"></div>
 </body>
@@ -58,11 +57,14 @@
 
     const CreateIframeElement = () => {
 
-    // Creating iframe element.
-    var el = document.createElement("iframe");
-
-    // setting the values for the attributes.
-    el.srcdoc = `<h1>.Iframe Element.</h1>
+    var iframe = document.createElement('iframe');
+    
+    // div tag in which iframe will be added should have id attribute with value myDIV
+    document.getElementById("myDIV").appendChild(iframe);
+    
+    // provide height and width to it
+    iframe.setAttribute("style","height:100%;width:100%;");
+    iframe.contentWindow.document.open();
             
     generate.addEventListener("click", async () =>{
         try {
@@ -79,7 +81,7 @@
             const result = await app.predict("/predict", [		
             				inputTextVideo.value, // string  in 'text' Textbox component
             	]); 
-             el.srcdoc = result.data[1] //`<h1>.Iframe Element.</h1>
+            iframe.contentWindow.document.write( result.data[1]);
 
             //prompt_holder.textContent = result.data[1].stringify();  // <iframe width="400" height="600" src="https://cogscidighum.github.io/3704A/action2.html" id="iframe2" title="Our webpage!"></iframe>
            
